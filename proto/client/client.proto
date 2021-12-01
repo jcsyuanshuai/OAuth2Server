@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package client;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/go/oauth2-server/proto/client";
+
+message Client {
+    string id = 1;
+    string secret = 2;
+    string redirect_uri = 3;
+    string app_name = 4;
+    string description = 5;
+    string user_id = 6;
+    string created_at = 7;
+    string updated_at = 8;
+}

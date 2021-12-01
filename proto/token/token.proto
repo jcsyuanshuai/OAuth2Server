@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package token;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/go/oauth2-server/proto/token";
+
+
+service TokenService {
+    rpc Create() returns ();
+    rpc Refresh() returns ();
+}
+
+
+
+enum TokenType {
+    TOKEN_TYPE_ACCESS = 0;
+    TOKEN_TYPE_REFRESH = 1;
+    TOKEN_TYPE_CODE = 2;
+}
+
+message TokenItem {
+    string access_token = 1;
+    string token_type = 2;
+    string expires_in = 3;
+    string refresh_token = 4;
+}
+
+message Token {
+    string id = 1;
+    string token = 2;
+    string user_id = 3;
+    string client_id = 6;
+    TokenType token_type = 7; // access| refresh| auth_code
+    string scopes = 8;
+    string expires_in = 9;
+    string created_at = 10;
+    string updated_at = 11;
+}
