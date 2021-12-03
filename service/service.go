@@ -1,18 +1,19 @@
 package service
 
 import (
-	"github.com/go/oauth2-server/model"
+	"github.com/go/oauth2-server/model/auth"
+	"github.com/go/oauth2-server/model/client"
 	"gorm.io/gorm"
 )
 
 type ClientService interface {
-	GetById(id string) (model.Client, error)
+	GetById(id string) (client.Client, error)
 }
 
 type TokenService interface {
-	Create() (model.Token, error)
+	Create() (token.Token, error)
 	Remove(tokenType string, token string) error
-	Get(tokenType string, token string) (model.Token, error)
+	Get(tokenType string, token string) (token.Token, error)
 }
 
 type TokenStore struct {

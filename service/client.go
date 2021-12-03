@@ -1,7 +1,9 @@
 package service
 
-import "github.com/go/oauth2-server/model"
+import (
+	"github.com/go/oauth2-server/model/client"
+)
 
-func (cs *ClientStore) GetById() (model.Client, error) {
-	return model.Client{}, nil
+func (cs *ClientStore) GetById() (client.Client, error) {
+	return client.Client{}, nil
 }

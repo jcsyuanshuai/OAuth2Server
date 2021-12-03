@@ -6,11 +6,33 @@ import "google/protobuf/empty.proto";
 
 option go_package = "github.com/go/oauth2-server/proto/client";
 
+service ClientService {
+    rpc Register(RegisterReq) returns (Client);
+    rpc Remove(ClientIdReq) returns (Client);
+    rpc Get(ClientIdReq) returns (Client);
+    rpc List(google.protobuf.Empty) returns (ListReq);
+}
+
+message RegisterReq {
+    string client_name = 1;
+    string description = 2;
+    string redirect_uri = 3;
+}
+
+message ClientIdReq {
+    string client_id = 1;
+}
+
+message ListReq {
+    repeated Client clients = 1;
+}
+
+
 message Client {
     string id = 1;
     string secret = 2;
     string redirect_uri = 3;
-    string app_name = 4;
+    string client_name = 4;
     string description = 5;
     string user_id = 6;
     string created_at = 7;

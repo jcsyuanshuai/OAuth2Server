@@ -1,6 +1,6 @@
-package model
+package permission
 
 type Permission struct {
-	ID   int
+	Id   int
 	Name string
 }

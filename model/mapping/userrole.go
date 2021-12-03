@@ -1,11 +1,11 @@
-package model
+package mapping
 
 import "time"
 
 type MapUserGroup struct {
 	ID        int
-	UserID    int
-	GroupID   int
+	UserId    int
+	RoleId    int
 	Creator   string
 	Updater   string
 	CreatedAt time.Time

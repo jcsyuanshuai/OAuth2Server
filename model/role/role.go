@@ -1,9 +1,9 @@
-package model
+package role
 
 import "time"
 
-type Group struct {
-	ID          int
+type Role struct {
+	Id          int
 	Name        string
 	Creator     string
 	Updater     string
