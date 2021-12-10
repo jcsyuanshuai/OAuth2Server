@@ -27,7 +27,6 @@ message ListReq {
     repeated Client clients = 1;
 }
 
-
 message Client {
     string id = 1;
     string secret = 2;

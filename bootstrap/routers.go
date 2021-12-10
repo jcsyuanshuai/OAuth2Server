@@ -5,8 +5,7 @@ import (
 )
 
 func SetupSwaggerRouters(opts *Options) {
-	grp := opts.Engine.Group("/user")
-	grp.GET("/list", user.List)
+	//todo
 }
 
 func SetupUserRouters(opts *Options) {
@@ -14,20 +13,19 @@ func SetupUserRouters(opts *Options) {
 	grp.GET("/list", user.List)
 	grp.POST("/login", user.Login)
 	grp.POST("/create", user.Create)
-
 }
 
 func SetupTokenRouters(opts *Options) {
-	grp := opts.Engine.Group("/token")
-	grp.GET("/list", user.List)
+	//grp := opts.Engine.Group("/token")
+	//todo
 }
 
 func SetupClientRouters(opts *Options) {
-	grp := opts.Engine.Group("/client")
-	grp.GET("/list", user.List)
+	//grp := opts.Engine.Group("/client")
+	//todo
 }
 
 func SetupPermissionRouters(opts *Options) {
-	grp := opts.Engine.Group("/permission")
-	grp.GET("/list", user.List)
+	//grp := opts.Engine.Group("/permission")
+	//todo
 }
