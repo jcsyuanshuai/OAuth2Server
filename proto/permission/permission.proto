@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package permission;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/go/oauth2-server/proto/user";
+
+service PermissionService {
+    rpc Create(Permission) returns (Permission);
+    rpc Delete(DeleteRequest) returns (google.protobuf.Empty);
+    rpc FindById(FindByIdReq) returns (ListRequest);
+}
+
+message FindByIdReq {
+    string permission_id = 1;
+}
+
+message ListRequest {
+    repeated Permission items = 1;
+}
+
+message Permission {
+    int64 id = 1;
+    string name = 2;
+    string created_at = 4;
+}
+
+message DeleteRequest {
+    int64 id = 1;
+}

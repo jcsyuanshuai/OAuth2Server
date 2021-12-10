@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package mapping;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/go/oauth2-server/proto/user";
+
+
+service MappingService {
+    rpc Create(MappingUserRole) returns (MappingUserRole);
+    rpc Delete(MappingUserRole) returns (google.protobuf.Empty);
+    rpc FindByUserId(FindByUserIdReq) returns (ListRequest);
+    rpc FindByRoleId(FindByRoleIdReq) returns (ListRequest);
+}
+
+message FindByRoleIdReq {
+    string role_id = 2;
+}
+
+message FindByUserIdReq {
+    string user_id = 1;
+}
+
+message ListRequest {
+    repeated MappingUserRole items = 1;
+}
+
+message MappingUserRole {
+    int64 user_id = 2;
+    int64 role_id = 3;
+    string creator = 4;
+    string created_at = 13;
+}
