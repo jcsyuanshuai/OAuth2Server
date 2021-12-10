@@ -2,23 +2,38 @@ syntax = "proto3";
 
 package token;
 
-option go_package = "github.com/go/oauth2-server/proto/token";
+import "google/protobuf/empty.proto";
 
+option go_package = "github.com/go/oauth2-server/proto/token";
 
 service TokenService {
     rpc Refresh(RefreshReq) returns (TokenItem);
+    rpc Authorize(AuthorizeReq) returns (google.protobuf.Empty);
 
-    rpc Password(PasswordReq) returns (TokenItem);
+    rpc Code(CodeReq) returns (TokenItem); // return code
+
+    rpc PasswordCredential(PasswordCredentialReq) returns (TokenItem);
     rpc ClientCredential(ClientCredentialReq) returns (TokenItem);
-    rpc AuthorizationCode(AuthorizationCodeReq) returns (TokenItem);
+    rpc Implicit(AuthorizationCodeReq) returns (TokenItem);
+    rpc AuthorizationCode(AuthorizationCodeReq) returns (TokenItem); // return token
+}
+
+message AuthorizeReq {
+    string token = 1;
 }
 
 message RefreshReq {
-    string token = 2;
+    string token = 1;
 }
 
-message PasswordReq {
-    string username = 1;
+message CodeReq {
+    string client_id = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message PasswordCredentialReq {
+    string email = 1;
     string password = 2;
     string client_id = 3;
 }
@@ -30,22 +45,27 @@ message ClientCredentialReq {
 
 message AuthorizationCodeReq {
     string code = 1;
+    string client_id = 2;
+    string client_secret = 3;
+    string email = 4;
+    string password = 5;
 }
 
 message TokenItem {
     string access_token = 1;
     string token_type = 2;
-    string expires_in = 3;
+    int64 expires_in = 3;
     string refresh_token = 4;
+    string code = 5;
+    string created_at = 6;
 }
 
-message Token {
-    string token = 1;
-    string user_id = 2;
+message TokenInfo {
+    string grant_type = 1; // auth_code | refresh | password | client
+    string email = 2;
     string client_id = 3;
     string token_type = 4; // access| refresh| auth_code
     string scopes = 5;
-    string expires_at = 6;
+    int64 expires_in = 6;
     string created_at = 7;
-    string updated_at = 8;
 }

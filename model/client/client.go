@@ -3,13 +3,12 @@ package client
 import "time"
 
 type Client struct {
-	ID          string
+	Id          string
 	Secret      string
 	RedirectUri string
 	UserId      string
-	AppName     string
+	Name        string
 	Description string
 	CreatedAt   time.Time
 	UpdatedAt   time.Time
 }
-

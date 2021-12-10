@@ -1,21 +1,17 @@
 package token
 
-import "time"
-
-const (
-	TokenTypeAccess   = "Access"
-	TokenTypeAuthCode = "Code"
-	TokenTypeRefresh  = "Refresh"
+import (
+	"github.com/go/oauth2-server/model/client"
+	"github.com/go/oauth2-server/model/user"
+	"time"
 )
 
 type Token struct {
-	ID        string
-	UserID    string
-	ClientID  string
-	Type      string
-	Token     string
+	User      user.User
+	Client    client.Client
 	Scopes    string
-	ExpiresIn time.Time
+	Type      string
+	ExpiresAt time.Time
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }

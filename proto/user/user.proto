@@ -29,10 +29,18 @@ message ListResponse {
 
 }
 
+message LoginRequest {
+
+}
+
+message ChangePasswordRequest {
+
+}
+
 message User {
     int64 id = 1;
     string name = 2;
-    int32 gender = 15;
+    string gender = 15;
     string email = 3;
     string password = 4;
     string phone_number = 5;

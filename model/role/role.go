@@ -7,7 +7,7 @@ type Role struct {
 	Name        string
 	Creator     string
 	Updater     string
-	Scopes      string
+	Scopes      string //[1,2,3] permissions
 	Description string
 	CreatedAt   time.Time
 	UpdatedAt   time.Time
